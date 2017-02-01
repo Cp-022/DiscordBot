@@ -11,7 +11,7 @@ let Dispatcher = (function(chalk) {
         } else if(channel === "message") {
             // Here there are two controllers with the same channel, based on the
             // Body, we can figure out which of the controllers needs to be loaded.
-            if(body.content[0] === config('commanddelim', "!")) {
+            if(body.content[0] === config('commanddelim', "!") && !body.author.bot) {
                 dispatcher = require("./command.js");
             } else {
                 dispatcher = require("./message.js");
